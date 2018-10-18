@@ -1,0 +1,13 @@
+<div class="wrapper" *ngIf="(user | async) || {} as user">
+  <div class="user-data" *ngIf="user.uid">
+    <img src="{{user.photoURL}}" alt="">
+    <p>{{user.displayName}}</p>
+    <ion-button (click)="signOut()" *ngIf="user.uid">Log Out</ion-button>
+  </div>
+  <ion-button (click)="socialSignIn('facebook')" *ngIf="!user.uid" color="fb">
+    <ion-icon name="logo-facebook"></ion-icon> Facebook
+  </ion-button>
+  <ion-button (click)="socialSignIn('google')" *ngIf="!user.uid" color="danger">
+    <ion-icon name="logo-googleplus"></ion-icon> Google
+  </ion-button>
+</div>
